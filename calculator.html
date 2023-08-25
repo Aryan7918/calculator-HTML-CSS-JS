@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #0a0a0a,#3a4452);
+        }
+        .calculator{
+            border:  1px solid rgb(255, 255, 255);
+            padding: 1em;
+            border-radius: 12px;
+            box-shadow: 0px 3px 15px rgba(146, 137, 137, 0.5);
+
+        }
+        input{
+            width:320px;
+            border: none;
+            padding: 24px;
+            margin:10px;
+            background: transparent;
+            border-radius: 10px;
+            box-shadow: -1px 1px 7px rgba(255, 255, 255, 0.2);
+            font-size: 40px;
+            text-align: right;
+            cursor: pointer;
+            color: aliceblue;
+        }
+
+        input::placeholder{
+            color: aliceblue;
+        }
+
+        button{
+            border:none;
+            width:60px;
+            height: 60px;
+            margin:10px;
+            border-radius:25%;
+            background: transparent;
+            color: aliceblue;
+            font-size: 20px;
+            box-shadow: -2px 2px 5px rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+        }
+        .opt{
+            color: #03bf03;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" name="" id="inputbox" placeholder="0">
+        <div>
+            <button class="acbtn opt">AC</button>
+            <button class="delbtn opt">DEL</button>
+            <button class="modulobtn opt">%</button>
+            <button class="dividebtn opt">/</button>
+        </div>
+        <div>
+            <button class="sevenbtn ">7</button>
+            <button class="eightbtn ">8</button> 
+            <button class="ninebtn">9</button>
+            <button class="multibtn opt">*</button>
+        </div>
+        <div>
+            <button class="fourbtn">4</button>
+            <button class="fivebtn">5</button> 
+            <button class="sixbtn">6</button>
+            <button class="minusbtn opt">-</button>
+        </div>
+        <div>
+            <button class="onebtn">1</button>
+            <button class="twobtn">2</button> 
+            <button class="threebtn">3</button>
+            <button class="plusbtn opt">+</button>
+        </div>
+        <div>
+            <button class="duozbtn">00</button>
+            <button class="zerobtn">0</button> 
+            <button class="dotbtn">.</button>
+            <button class="equalbtn opt">=</button>
+        </div>
+    </div>
+
+    <script>
+        let input=document.getElementById('inputbox');
+        let buttons= document.querySelectorAll('button');
+
+        let string ="";
+        let arr= Array.from(buttons);
+        arr.forEach(button=>{
+            button.addEventListener('click', (e)=>{
+                if(e.target.innerHTML == '='){
+                    string = eval(string);
+                    input.value = string;
+                }
+                else if(e.target.innerHTML == 'AC'){
+                    string = "";
+                    input.value = string;
+                }
+                else if(e.target.innerHTML == 'DEL'){
+                    string = string.substring(0,string.length-1);
+                    input.value = string;
+                }
+                else{
+                    string += e.target.innerHTML;
+                    input.value = string;
+                }
+        })
+    })
+    </script>
+
+</body>
+</html>
